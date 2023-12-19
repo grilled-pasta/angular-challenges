@@ -5,5 +5,5 @@ import { HomeComponent } from './home.component';
 export const appRoutes: Route[] = [
   { path: 'home', component: HomeComponent },
   { path: 'foo', component: FooComponent },
-  { path: '**', redirectTo: 'home' },
+  { path: '**', redirectTo: '/home', pathMatch: 'full' },
 ];

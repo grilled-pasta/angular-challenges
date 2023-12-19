@@ -1,17 +1,21 @@
 import { NgFor } from '@angular/common';
 import { Component } from '@angular/core';
-import { ComputePipe } from './compute.pipe';
 
 @Component({
   standalone: true,
-  imports: [NgFor, ComputePipe],
+  imports: [NgFor],
   selector: 'app-root',
   template: `
-    @for (person of persons; track person; let index = $index) {
-      {{ person | compute: index }}
-    }
+    <div *ngFor="let person of persons; let index = index">
+      {{ heavyComputation(person, index) }}
+    </div>
   `,
 })
 export class AppComponent {
   persons = ['toto', 'jack'];
+
+  heavyComputation(name: string, index: number) {
+    // very heavy computation
+    return `${name} - ${index}`;
+  }
 }
